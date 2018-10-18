@@ -1,6 +1,22 @@
 # Wave-U-Net
 Implementation of the [Wave-U-Net](https://arxiv.org/abs/1806.03185) for audio source separation.
 
+## Usage
+
+prepare the pre-trained model. follow [here](https://github.com/yukke42/Wave-U-Net#downloading-our-pretrained-models)
+
+```
+# create a docker image
+$ docker-compose build
+# take a quick demo
+$ docker-compose up cpu
+# do interactively in the container
+$ docker-compose run cpu /bin/bash
+```
+
+
+=== Original README ===
+
 ## Listening examples
 
 Listen to vocal separation results [here](https://sisec18.unmix.app/#/unmix/Side%20Effects%20Project%20-%20Sing%20With%20Me/STL1) and to multi-instrument separation results [here](https://sisec18.unmix.app/#/unmix/Side%20Effects%20Project%20-%20Sing%20With%20Me/STL2)

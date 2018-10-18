@@ -1,0 +1,19 @@
+FROM python:2.7
+
+RUN apt-get update && apt-get install -y \
+    libsndfile1-dev \
+    ffmpeg
+
+RUN pip install --upgrade pip --no-cache-dir
+
+WORKDIR /root
+
+COPY requirements.txt /root/requirements.txt
+RUN pip install numpy
+# numpy を先にインストールするでscikits.audiolabをインストールする際のエラーが避けられる
+RUN pip install -r requirements.txt --no-cache-dir
+
+WORKDIR /root/Wave-U-Net
+
+CMD python Predict.py with cfg.baseline_stereo
+
