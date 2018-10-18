@@ -1,15 +1,19 @@
 FROM python:2.7
 
-RUN apt-get update && apt-get install -y \
-    libsndfile1-dev \
-    ffmpeg
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libsndfile1-dev \
+        ffmpeg \
+    && apt autoclean \
+    && apt clean -s
+
 
 RUN pip install --upgrade pip --no-cache-dir
 
 WORKDIR /root
 
 COPY requirements.txt /root/requirements.txt
-RUN pip install numpy
+RUN pip install numpy --no-cache-dir
 # numpy を先にインストールするでscikits.audiolabをインストールする際のエラーが避けられる
 RUN pip install -r requirements.txt --no-cache-dir
 
